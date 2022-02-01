@@ -70,7 +70,7 @@ namespace JWTAuthTest.Services
             if(user == null) throw new ArgumentNullException(nameof(user));
             user.Name = aes.Encrypt(key, user.Name);
             user.Password = aes.Encrypt(key, user.Password);
-            user.Email = aes.Encrypt(key, user.Email);   
+            user.Email = aes.Encrypt(key, user.Email);
             await _context.Users.AddAsync(user);
             var token = GenerateJwtToken(user);
             return new AuthenticateResponse(user, token);
